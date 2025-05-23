@@ -58,7 +58,7 @@ Criar uma solução de Business Intelligence simulada para o varejo na América 
 
 # O que você estará simulando
 
-Você vai agir como se fosse um BI Engineer dentro de um time de operações da Amazon, ajudando a responder perguntas como:
+Agir como se fosse um BI Engineer dentro de um time de operações da Amazon, ajudando a responder perguntas como:
 
 - Quais estados ou regiões vendem mais?
 
