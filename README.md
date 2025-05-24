@@ -42,7 +42,7 @@ Basic Qualifications
  Demonstrated advanced proficiency in English, both written and verbal
 
 
-# Objetivo do Projeto de Business Intelligence
+# Objetivo do Projeto de Business Intelligence pensado de acordo com a vaga acima
 
 Criar uma solução de Business Intelligence simulada para o varejo na América Latina, utilizando dados reais de e-commerce do Brasil, com foco em:
 
