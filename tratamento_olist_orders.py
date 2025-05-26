@@ -92,18 +92,16 @@ dim_tempo = dim_tempo.drop(columns=["order_purchase_timestamp"]).drop_duplicates
 os.makedirs("dimensoes", exist_ok=True)
 dim_tempo.to_csv("dimensoes/dim_tempo.csv", index=False)
 
-"""# etl_fato_vendas"""
+# etl_fato_vendas
 
 df_items = pd.read_csv("olist_order_items_dataset.csv")
-
 df_orders = pd.read_csv("olist_orders_dataset.csv")
-
 df_payments = pd.read_csv("olist_order_payments_dataset.csv")
-
 df_reviews = pd.read_csv("olist_order_reviews_dataset.csv")
 
-# Join principal: order_items + orders
-fato_vendas = df_items.merge(df_orders, on="order_id", how="left")
+# Join principal: order_items + orders + customer_id
+fato_vendas = df_items.merge(df_orders[['order_id', 'customer_id', 'order_purchase_timestamp', 'order_delivered_customer_date']], 
+                             on="order_id", how="left")
 
 # Pagamentos: usar apenas um tipo por pedido
 df_pagamentos_unicos = df_payments.drop_duplicates(subset=["order_id"])
@@ -113,9 +111,10 @@ fato_vendas = fato_vendas.merge(df_pagamentos_unicos, on="order_id", how="left")
 df_reviews_simples = df_reviews[["order_id", "review_score"]].drop_duplicates()
 fato_vendas = fato_vendas.merge(df_reviews_simples, on="order_id", how="left")
 
-# Seleciona colunas da fato
+# Seleciona colunas da fato (agora inclui customer_id)
 fato_vendas = fato_vendas[[
     "order_id",
+    "customer_id",
     "order_item_id",
     "product_id",
     "seller_id",
@@ -128,11 +127,9 @@ fato_vendas = fato_vendas[[
     "order_delivered_customer_date"
 ]]
 
-# Apenas salve diretamente, sem tentar criar a pasta
-fato_vendas.to_csv("/content/fato_vendas.csv", index=False)
-
-# Salva o arquivo dentro de /content (que é o diretório atual do Colab)
+# Salvar o arquivo corrigido
 fato_vendas.to_csv("fato_vendas.csv", index=False)
+
 
 # Faz o download para sua máquina
 from google.colab import files
