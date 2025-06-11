@@ -39,6 +39,6 @@ for arquivo_csv, nome_tabela in arquivos_para_tabelas.items():
         # Enviar para a tabela no banco
     df.to_sql(name=nome_tabela, con=engine, if_exists="append", index=False)
     
-print(f"✅ Tabela '{nome_tabela}' populada com sucesso!\n")
+print(f"Tabela '{nome_tabela}' populada com sucesso!\n")
 
-print("🏁 Todas as dimensões foram importadas para o banco.")
+print("Todas as dimensões foram importadas para o banco.")
