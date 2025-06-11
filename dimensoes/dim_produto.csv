@@ -1,4 +1,4 @@
-product_id,product_category_name,product_category_name_english,product_name_lenght,product_description_lenght,product_weight_g
+id_produto,nome_categoria,nome_categoria_ingles,tamanho_nome,tamanho_descricao,peso_gramas
 1e9e8ef04dbcff4541ed26657ea517e5,perfumaria,perfumery,40.0,287.0,225.0
 3aa071139cb16b67ca9e5dea641aaa2f,artes,art,44.0,276.0,1000.0
 96bd76ec8810374ed1b65e291975717f,esporte_lazer,sports_leisure,46.0,250.0,154.0
